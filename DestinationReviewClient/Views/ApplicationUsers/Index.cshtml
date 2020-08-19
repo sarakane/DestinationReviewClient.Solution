@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+@using DestinationReviewClient.Models;
+@model List<ApplicationUser>
+
+<h1>Users</h1>
+<hr />
+@foreach (ApplicationUser user in Model)
+{
+  <h3>@user.FirstName @user.LastName</h3>
+  <h5>@user.Username</h5>
+  <hr />
+}

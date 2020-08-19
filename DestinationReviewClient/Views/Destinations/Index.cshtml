@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@using DestinationReviewClient.Models;
+@model List<Destination>
+
+<h1>Destinations</h1>
+<hr />
+@foreach (Destination destination in Model)
+{
+  <h3>@destination.City, @destination.Country</h3>
+  <hr />
+}
