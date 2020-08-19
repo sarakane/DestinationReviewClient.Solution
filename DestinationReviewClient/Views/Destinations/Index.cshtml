@@ -9,6 +9,6 @@
 <hr />
 @foreach (Destination destination in Model)
 {
-  <h3>@destination.City, @destination.Country</h3>
+  <h3>@Html.ActionLink($"{destination.City}, {destination.Country}", "Details", new { id = destination.DestinationId })</h3>
   <hr />
 }

@@ -28,7 +28,19 @@ namespace DestinationReviewClient.Models
 
       JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
       List<ApplicationUser> userList = JsonConvert.DeserializeObject<List<ApplicationUser>>(jsonResponse.ToString());
+      
       return userList;
+    }
+
+    public static ApplicationUser GetDetails(int id)
+    {
+      var apiCallTask = ApiHelper.GetUser(id);
+      var result = apiCallTask.Result;
+
+      JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+      ApplicationUser applicationUser = JsonConvert.DeserializeObject<ApplicationUser>(jsonResponse.ToString());
+
+      return applicationUser;
     }
 
   }

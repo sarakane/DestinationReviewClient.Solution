@@ -18,7 +18,7 @@ namespace DestinationReviewClient.Models
     public int DestinationId { get; set; }
     public int UserId { get; set; }
     public virtual Destination Destination { get; set; }
-    // public virtual User User { get; set; }
+    public ApplicationUser User { get; set; }
 
     public static List<Review> GetReviews()
     {
@@ -27,7 +27,19 @@ namespace DestinationReviewClient.Models
 
       JArray jsonResponse = JsonConvert.DeserializeObject<JArray>(result);
       List<Review> reviewList = JsonConvert.DeserializeObject<List<Review>>(jsonResponse.ToString());
+      
       return reviewList;
+    }
+
+    public static Review GetDetails(int id)
+    {
+      var apiCallTask = ApiHelper.GetReview(id);
+      var result = apiCallTask.Result;
+
+      JObject jsonResponse = JsonConvert.DeserializeObject<JObject>(result);
+      Review review = JsonConvert.DeserializeObject<Review>(jsonResponse.ToString());
+
+      return review;
     }
   }
 }

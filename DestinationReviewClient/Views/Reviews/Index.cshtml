@@ -9,9 +9,7 @@
 <hr />
 @foreach (Review review in Model)
 {
-  <h3>@review.Title</h3>
+  <h3>@Html.ActionLink($"{review.Title}", "Details", new { id = review.ReviewId })</h3>
   <h5>@review.Destination.City, @review.Destination.Country</h5>
-  <h5>Rating: @review.Rating out of 5</h5>
-  <p>@review.Body</p>
   <hr />
 }

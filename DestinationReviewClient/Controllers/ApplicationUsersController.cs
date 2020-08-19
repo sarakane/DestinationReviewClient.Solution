@@ -15,5 +15,11 @@ namespace DestinationReviewClient.Controllers
       var allUsers = ApplicationUser.GetUsers();
       return View(allUsers);
     }
+
+    public IActionResult Details(int id)
+    {
+      var user = ApplicationUser.GetDetails(id);
+      return View(user);
+    }
   }
 }

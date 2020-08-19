@@ -15,5 +15,12 @@ namespace DestinationReviewClient.Controllers
       var allReviews = Review.GetReviews();
       return View(allReviews);
     }
+
+    public IActionResult Details(int id)
+    {
+      var review = Review.GetDetails(id);
+      ViewBag.User = ApplicationUser.GetDetails(review.UserId);
+      return View(review);
+    }
   }
 }

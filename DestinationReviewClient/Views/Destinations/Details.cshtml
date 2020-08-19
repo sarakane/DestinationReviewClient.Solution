@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@using DestinationReviewClient.Models;
+@model DestinationReviewClient.Models.Destination
+
+<h1>Destination Details</h1>
+<hr />
+<h3>@Model.City, @Model.Country</h3>
+@foreach (Review review in Model.Reviews)
+{
+  <h5>@review.Title</h5>
+  <h5>Rating: @review.Rating out of 5</h5>
+  <p>@review.Body</p>
+  <hr />
+}

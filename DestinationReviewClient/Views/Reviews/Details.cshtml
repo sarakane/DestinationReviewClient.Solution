@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@using DestinationReviewClient.Models;
+@model DestinationReviewClient.Models.Review
+
+<h1>Review Details</h1>
+<hr />
+<h3>@Model.Title</h3>
+<h5>@Model.Destination.City, @Model.Destination.Country</h5>
+<h5>Rating: @Model.Rating out of 5!</h5>
+<p>@Model.Body</p>
+<h5>- @ViewBag.User.Username</h5>

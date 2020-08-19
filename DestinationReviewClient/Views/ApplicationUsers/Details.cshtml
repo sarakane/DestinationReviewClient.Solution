@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@using DestinationReviewClient.Models;
+@model DestinationReviewClient.Models.ApplicationUser
+
+<h1>User Details</h1>
+<hr />
+<h3>@Model.Username</h3>
+<h5>@Model.FirstName @Model.LastName</h5>
+<hr />
+<h5>Destinations</h5>
+@foreach (Destination destination in @Model.Destinations)
+{
+  <h3>@destination.City, @destination.Country</h3>
+}
+<h5>Reviews</h5>
+@foreach (Review review in @Model.Reviews)
+{
+  <h3>@review.Title</h3>
+}
