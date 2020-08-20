@@ -21,6 +21,15 @@ namespace DestinationReviewClient.Models
       return response.Content;
     }
 
+    public static async Task Post(string destination)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"destinations", Method.POST);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(destination);
+      var response = await client.ExecuteTaskAsync(request);
+    }
+
     public static async Task<string> GetAllReviews()
     {
       RestClient client = new RestClient("http://localhost:5000/api");
