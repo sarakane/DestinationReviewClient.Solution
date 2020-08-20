@@ -66,7 +66,7 @@ namespace DestinationReviewClient.Models
     public static void Post(Destination destination)
     {
       string jsonDestination = JsonConvert.SerializeObject(destination);
-      var apiCallTask = ApiHelper.Post(jsonDestination);
+      var apiCallTask = ApiHelper.PostDestination(jsonDestination);
     }
   }
 }

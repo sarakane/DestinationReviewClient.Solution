@@ -21,7 +21,7 @@ namespace DestinationReviewClient.Models
       return response.Content;
     }
 
-    public static async Task Post(string destination)
+    public static async Task PostDestination(string destination)
     {
       RestClient client = new RestClient("http://localhost:5000/api");
       RestRequest request = new RestRequest($"destinations", Method.POST);
@@ -60,6 +60,15 @@ namespace DestinationReviewClient.Models
       RestRequest request = new RestRequest($"users/{id}", Method.GET);
       var response = await client.ExecuteTaskAsync(request);
       return response.Content;
+    }
+
+    public static async Task PostUser(string user)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"users/register", Method.POST);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(user);
+      var response = await client.ExecuteTaskAsync(request);
     }
   }
 }
