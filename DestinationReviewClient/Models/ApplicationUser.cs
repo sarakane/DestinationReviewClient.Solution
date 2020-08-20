@@ -48,5 +48,11 @@ namespace DestinationReviewClient.Models
       string jsonUser = JsonConvert.SerializeObject(user);
       var apiCallTask = ApiHelper.PostUser(jsonUser);
     }
+
+    public static void Authenticate(ApplicationUser user)
+    {
+      string jsonUser = JsonConvert.SerializeObject(user);
+      var apiCallTask = ApiHelper.AuthenticateUser(jsonUser);
+    }
   }
 }

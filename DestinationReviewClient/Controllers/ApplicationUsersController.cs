@@ -33,5 +33,17 @@ namespace DestinationReviewClient.Controllers
       ApplicationUser.Post(user);
       return RedirectToAction("Index");
     }
+
+    public IActionResult Authenticate()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public IActionResult Authenticate(ApplicationUser user)
+    {
+      ApplicationUser.Authenticate(user);
+      return RedirectToAction("Index", new {id = user.Id});
+    }
   }
 }

@@ -70,5 +70,14 @@ namespace DestinationReviewClient.Models
       request.AddJsonBody(user);
       var response = await client.ExecuteTaskAsync(request);
     }
+
+    public static async Task AuthenticateUser(string user)
+    {
+      RestClient client = new RestClient("http://localhost:5000/api");
+      RestRequest request = new RestRequest($"users/authenticate", Method.POST);
+      request.AddHeader("Content-Type", "application/json");
+      request.AddJsonBody(user);
+      var response = await client.ExecuteTaskAsync(request);
+    }
   }
 }

@@ -10,6 +10,10 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using DestinationReviewClient.Models;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 namespace DestinationReviewClient
 {
     public class Startup
@@ -31,6 +35,19 @@ namespace DestinationReviewClient
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddAuthentication()
+                .AddJwtBearer(c =>
+                {
+                    c.RequireHttpsMetadata = false;
+                    c.SaveToken = true;
+
+                    c.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        ValidIssuer = Configuration["Tokens:Issuer"],
+                        ValidAudience = Configuration["Tokens:Issuer"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]))
+                    };
+                });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
@@ -52,6 +69,8 @@ namespace DestinationReviewClient
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
+
+            app.UseAuthentication();
 
             app.UseMvc(routes =>
             {
