@@ -6,6 +6,7 @@
 @model List<Destination>
 
 <h1>Destinations</h1>
+<p>@Html.ActionLink("Add a New Destination", "Create")</p>
 <hr />
 @foreach (Destination destination in Model)
 {

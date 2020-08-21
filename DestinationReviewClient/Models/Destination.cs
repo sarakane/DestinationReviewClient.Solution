@@ -62,5 +62,11 @@ namespace DestinationReviewClient.Models
 
       return destination;
     }
+
+    public static void Post(Destination destination)
+    {
+      string jsonDestination = JsonConvert.SerializeObject(destination);
+      var apiCallTask = ApiHelper.PostDestination(jsonDestination);
+    }
   }
 }

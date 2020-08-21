@@ -16,8 +16,8 @@ namespace DestinationReviewClient.Models
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Username { get; set; }
-    public byte[] PasswordHash { get; set; }
-    public byte[] PasswordSalt { get; set; }
+    public string Password { get; set; }
+  
     public virtual ICollection<Review> Reviews { get; set; }
     public virtual ICollection<Destination> Destinations { get; set; }
 
@@ -43,5 +43,16 @@ namespace DestinationReviewClient.Models
       return applicationUser;
     }
 
+    public static void Post(ApplicationUser user)
+    {
+      string jsonUser = JsonConvert.SerializeObject(user);
+      var apiCallTask = ApiHelper.PostUser(jsonUser);
+    }
+
+    public static void Authenticate(ApplicationUser user)
+    {
+      string jsonUser = JsonConvert.SerializeObject(user);
+      var apiCallTask = ApiHelper.AuthenticateUser(jsonUser);
+    }
   }
 }

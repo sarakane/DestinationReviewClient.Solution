@@ -21,5 +21,29 @@ namespace DestinationReviewClient.Controllers
       var user = ApplicationUser.GetDetails(id);
       return View(user);
     }
+
+    public IActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public IActionResult Create(ApplicationUser user)
+    {
+      ApplicationUser.Post(user);
+      return RedirectToAction("Index");
+    }
+
+    public IActionResult Authenticate()
+    {
+      return View();
+    }
+
+    [HttpPost]
+    public IActionResult Authenticate(ApplicationUser user)
+    {
+      ApplicationUser.Authenticate(user);
+      return RedirectToAction("Index", new {id = user.Id});
+    }
   }
 }

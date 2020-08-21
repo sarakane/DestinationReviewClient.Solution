@@ -1,0 +1,20 @@
+@{
+  Layout = "_Layout";
+}
+
+@model DestinationReviewClient.Models.Destination
+
+<h1>Add a Destination</h1>
+<hr />
+@using (Html.BeginForm())
+{
+  <div class="form-group">
+    @Html.Label("City")
+    @Html.TextBoxFor(model => model.City, new { @class="form-control" })
+  </div>
+  <div class="form-group">
+    @Html.Label("Country")
+    @Html.TextBoxFor(model => model.Country, new { @class="form-control" })
+  </div>
+  <input type="submit" value="Add Destination" class="btn btn-primary" />
+}
